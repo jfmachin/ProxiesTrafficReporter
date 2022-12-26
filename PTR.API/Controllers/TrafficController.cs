@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PMR.API.Features.Proxymesh.Queries.GetTraffic;
+using PTR.API.Features.Proxymesh.Queries.GetTraffic;
 
-namespace PMR.API.Controllers;
+namespace PTR.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class TrafficController : ControllerBase {
@@ -13,7 +13,7 @@ public class TrafficController : ControllerBase {
     }
 
     [HttpGet("proxyMesh")]
-    public async Task<ActionResult<string>> traffic() {
+    public async Task<ActionResult<string>> Traffic() {
         var traffic = await mediator.Send(new GetProxymeshTrafficQuery());
         return Ok(traffic);
     }

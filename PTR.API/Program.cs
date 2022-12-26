@@ -1,5 +1,5 @@
 using MediatR;
-using PMR.API.HostedServices;
+using PTR.API.HostedServices;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
