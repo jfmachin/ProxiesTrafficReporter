@@ -6,7 +6,6 @@ namespace PMR.API.Features.Proxymesh.Queries.GetTraffic;
 public class GetProxymeshTrafficQueryHandler : IRequestHandler<GetProxymeshTrafficQuery, string> {
     private readonly IConfiguration conf;
     private readonly ILogger<GetProxymeshTrafficQueryHandler> logger;
-    private readonly string webHookURL = "https://localitymedia.webhook.office.com/webhookb2/2c0e2458-c4b2-448d-bb55-4b8c1f86feab@dca4b479-dd94-4d7b-bddb-8594c6160459/IncomingWebhook/b4ac0b4fe1a6421c8bfca67ce4706881/76e6b7af-882d-4e8a-aa8c-52a4c6f98a4a";
 
     public GetProxymeshTrafficQueryHandler(IConfiguration conf, 
         ILogger<GetProxymeshTrafficQueryHandler> logger) {
@@ -65,7 +64,7 @@ public class GetProxymeshTrafficQueryHandler : IRequestHandler<GetProxymeshTraff
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(webHookURL, content);
+                var response = await client.PostAsync(conf.GetValue<string>("ProxyMesh:webHookUrl"), content);
 
                 logger.LogInformation("Done!");
                 return traffic;
