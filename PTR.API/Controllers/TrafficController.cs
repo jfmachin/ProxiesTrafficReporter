@@ -13,8 +13,8 @@ public class TrafficController : ControllerBase {
     }
 
     [HttpGet("proxyMesh")]
-    public async Task<ActionResult<string>> Traffic() {
-        var traffic = await mediator.Send(new GetProxymeshTrafficQuery());
-        return Ok(traffic);
+    public async Task<ActionResult<string>> TrafficPM() {
+        var usage = await mediator.Send(new GetProxymeshTrafficQuery());
+        return Ok(usage);
     }
 }
