@@ -18,8 +18,7 @@ public class GetProxymeshTrafficQueryHandler : IRequestHandler<GetProxymeshTraff
         await browserFetcher.DownloadAsync();
 
         var url = "https://proxymesh.com/auth/login/";
-
-        var launchOptions = new LaunchOptions() { Headless = true };
+        var launchOptions = new LaunchOptions() { Headless = true, Args = new string[] { "--no-sandbox" } };
 
         try {
             using var browser = await Puppeteer.LaunchAsync(launchOptions);
