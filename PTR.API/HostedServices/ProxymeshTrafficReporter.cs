@@ -5,7 +5,6 @@ namespace PTR.API.HostedServices;
 public class ProxymeshTrafficReporter : BackgroundService {
     private readonly ILogger<ProxymeshTrafficReporter> logger;
     private readonly IMediator mediator;
-    private readonly TimeSpan _period = TimeSpan.FromSeconds(1);
 
     public ProxymeshTrafficReporter(ILogger<ProxymeshTrafficReporter> logger, IMediator mediator) {
         this.logger = logger;
